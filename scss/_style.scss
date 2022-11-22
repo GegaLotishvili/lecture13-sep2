@@ -1,0 +1,60 @@
+.s-1 {
+    height: 500px;
+    .container {
+        @include goflex(row, space-around, center);
+        @extend %mycontainer;
+        background-color: aqua;
+        height: 500px;
+
+        // this is parent-child style nesting
+        & > .box {
+            width: 150px;
+            height: 150px;
+            &:first-child {
+                background-color: $mycolor1;
+            }
+            &:nth-child(2) {
+                background-color: $mycolor2;
+            }
+            &:last-child {
+                background-color: $mycolor3;
+            }
+            @media (max-width: $tabletsize) {
+                width: 200px;
+                height: 200px;
+            }
+            @media (max-width: $phonesize) {
+                width: 150px;
+                height: 150px;
+            }
+            @media (max-width: $foldsize) {
+                width: 120px;
+                height: 120px;
+            }
+        }
+        @media (max-width: $tabletsize) {
+            width: 90%;
+        }
+        @media (max-width: $phonesize) {
+            width: 80%;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+        @media (max-width: $foldsize) {
+            background-color: lightcoral;
+        }
+    }
+}
+
+.s-2 {
+    background-color: lightpink;
+    height: 500px;
+    .container {
+        @extend %mycontainer;
+        background-color: lightsalmon;
+        height: 300px;
+        .wrapper {
+        }
+    }
+}
